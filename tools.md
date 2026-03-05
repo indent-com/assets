@@ -29,3 +29,6 @@ ToolSearchToolRegex
 AskChat
 WebFetch
 Skill
+AskUserQuestion
+EnterPlanMode
+ExitPlanMode
