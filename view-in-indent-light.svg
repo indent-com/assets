@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="20" role="img" aria-label="View in Indent">
+  <title>View in Indent</title>
+  <rect width="120" height="20" rx="3" fill="#fff" stroke="#d1d9e0" stroke-width="1"/>
+  <g transform="translate(6, 2)">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 8a3.5 3.5 0 100 7H8v-3.5a3.5 3.5 0 107 0V8h-3.5a3.5 3.5 0 100-7H8v3.5a3.5 3.5 0 10-7 0V8h3.5zm0 0A3.5 3.5 0 008 4.5 3.5 3.5 0 0011.5 8 3.5 3.5 0 008 11.5 3.5 3.5 0 004.5 8z" fill="#1F2328"/>
+    </svg>
+  </g>
+  <text x="28" y="14" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#1F2328" font-weight="500">View in Indent</text>
+</svg>
