@@ -1,14 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="113" height="28" viewBox="0 0 113 28" role="img" aria-label="Slack Thread">
+<svg xmlns="http://www.w3.org/2000/svg" width="118" height="28" viewBox="0 0 118 28" role="img" aria-label="Slack Thread">
   <title>Slack Thread</title>
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" class="grad-top"/>
+      <stop offset="1" class="grad-bot"/>
+    </linearGradient>
+  </defs>
   <style><![CDATA[
-    .bg { fill: #4A154B; }
-    .text { fill: #FFFFFF; }
-    .ico { fill: #FFFFFF; }
+    .grad-top { stop-color: #FFFFFF; }
+    .grad-bot { stop-color: #F9F0F9; }
+    .border { stroke: #4A154B; fill: none; }
+    .text { fill: #1A1A1A; }
+    .ico { fill: #4A154B; }
     @media (prefers-color-scheme: dark) {
-      .bg { fill: #611f69; }
+      .grad-top { stop-color: #2A1230; }
+      .grad-bot { stop-color: #1A0B1E; }
+      .border { stroke: #7C3085; }
+      .text { fill: #E8E8E8; }
+      .ico { fill: #C070C8; }
     }
   ]]></style>
-  <rect width="113" height="28" rx="6" class="bg"/>
+  <rect x="0.5" y="0.5" width="117" height="27" rx="6" fill="url(#bg-grad)" class="border"/>
   <g transform="translate(8, 5)">
     <svg width="18" height="18" viewBox="0 0 128 128" fill="none">
       <path d="M27.255 80.719c0 7.33-5.978 13.317-13.309 13.317C6.616 94.036.63 88.049.63 80.719s5.987-13.317 13.317-13.317h13.309zm6.709 0c0-7.33 5.987-13.317 13.317-13.317s13.317 5.986 13.317 13.317v33.335c0 7.33-5.986 13.317-13.317 13.317-7.33 0-13.317-5.987-13.317-13.317z" class="ico"/>
@@ -17,5 +29,5 @@
       <path d="M80.719 100.745c7.33 0 13.317 5.978 13.317 13.309 0 7.33-5.987 13.317-13.317 13.317s-13.317-5.987-13.317-13.317v-13.309zm0-6.709c-7.33 0-13.317-5.987-13.317-13.317s5.986-13.317 13.317-13.317h33.335c7.33 0 13.317 5.986 13.317 13.317 0 7.33-5.987 13.317-13.317 13.317z" class="ico"/>
     </svg>
   </g>
-  <text x="30" y="14" dominant-baseline="central" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" class="text">Slack Thread</text>
+  <text x="30" y="14" dominant-baseline="central" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="500" class="text">Slack Thread</text>
 </svg>
