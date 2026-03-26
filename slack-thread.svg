@@ -2,8 +2,10 @@
   <title>Slack Thread</title>
   <defs>
     <linearGradient id="shd" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity=".12"/>
-      <stop offset="1" stop-color="#000" stop-opacity=".15"/>
+      <stop offset="0" stop-color="#fff" stop-opacity=".5"/>
+      <stop offset=".1" stop-color="#fff" stop-opacity=".1"/>
+      <stop offset=".9" stop-color="#000" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
     </linearGradient>
   </defs>
   <style><![CDATA[
