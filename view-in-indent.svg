@@ -11,10 +11,10 @@
     }
   ]]></style>
   <rect width="138" height="28" rx="6" class="bg"/>
-  <g transform="translate(8, 6)">
+  <g transform="translate(10, 6)">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 8a3.5 3.5 0 100 7H8v-3.5a3.5 3.5 0 107 0V8h-3.5a3.5 3.5 0 100-7H8v3.5a3.5 3.5 0 10-7 0V8h3.5zm0 0A3.5 3.5 0 008 4.5 3.5 3.5 0 0011.5 8 3.5 3.5 0 008 11.5 3.5 3.5 0 004.5 8z" class="logo"/>
     </svg>
   </g>
-  <text x="30" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" class="text">View in Indent</text>
+  <text x="32" y="14" dominant-baseline="central" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" class="text">View in Indent</text>
 </svg>
