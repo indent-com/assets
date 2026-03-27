@@ -4,13 +4,13 @@
     <clipPath id="border-clip"><path d="M4,0 h113 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-113 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4"/></clipPath>
   </defs>
   <style><![CDATA[
-    .bg { fill: #F0F0F0; }
-    .border { stroke: rgba(0,0,0,0.1); }
-    .fg { fill: #000000; }
+    .bg { fill: #4A154B; }
+    .border { stroke: rgba(255,255,255,0.08); }
+    .fg { fill: white; }
     @media (prefers-color-scheme: dark) {
-      .bg { fill: #212121; }
-      .border { stroke: rgba(255,255,255,0.08); }
-      .fg { fill: #FFFFFF; }
+      .bg { fill: #611f69; }
+      .border { stroke: rgba(255,255,255,0.1); }
+      .fg { fill: white; }
     }
   ]]></style>
   <path d="M4,0 h113 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-113 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4" class="bg"/>
