@@ -1,0 +1,19 @@
+<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Open in Indent">
+  <title>Open in Indent</title>
+  <defs>
+    <clipPath id="clip-b"><rect x="0" y="0" width="22" height="22" rx="5"/></clipPath>
+  </defs>
+  <style><![CDATA[
+    .bg { fill: #1A1A1A; }
+    .bd { stroke: rgba(255,255,255,0.12); }
+    .fg { fill: #FFFFFF; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #F0F0F0; }
+      .bd { stroke: rgba(0,0,0,0.12); }
+      .fg { fill: #1A1A1A; }
+    }
+  ]]></style>
+  <rect x="0" y="0" width="22" height="22" rx="5" class="bg"/>
+  <rect x="0.5" y="0.5" width="21" height="21" rx="4.5" fill="none" class="bd" clip-path="url(#clip-b)"/>
+  <svg x="4" y="4" width="14" height="14" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 8a3.5 3.5 0 100 7H8v-3.5a3.5 3.5 0 107 0V8h-3.5a3.5 3.5 0 100-7H8v3.5a3.5 3.5 0 10-7 0V8h3.5zm0 0A3.5 3.5 0 008 4.5 3.5 3.5 0 0011.5 8 3.5 3.5 0 008 11.5 3.5 3.5 0 004.5 8z" class="fg"/></svg>
+</svg>
