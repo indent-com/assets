@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Token-waste analyzer for one user's Indent sessions over a time window.
 
-  waste.py sql <user_id> <org_id> [hours]            -> prints the three SQL queries (A, B, C) to run with run_query
+  waste.py sql <user_id> <org_id> [hours] [offset_hours] -> prints the three SQL queries (A, B, C) to run with run_query
+                                                         (window = now-hours .. now-offset_hours)
   waste.py report <A.parquet> <B.parquet> <C.parquet> -> prints a markdown report; writes traj/<session>.md spines
 
 Prod read-replica tables: sessions, billable_events (indexed on organization_id, occurred_at), session_events.
@@ -12,7 +13,7 @@ warnings.filterwarnings("ignore")
 
 FAM = """with active as (
   select distinct session_id from billable_events
-  where organization_id = '{org}' and deleted_at is null and occurred_at > now() - interval '{h} hours'
+  where organization_id = '{org}' and deleted_at is null and occurred_at > now() - interval '{h} hours' and occurred_at <= now() - interval '{o} hours'
 ), fam as (
   select s.id, coalesce(s.root_session_id, s.id) root_id, s.title, s.model, s.created_at, s.source->>'kind' src, s.is_private
   from sessions s join active a on a.session_id = s.id
@@ -23,7 +24,7 @@ SQL_A = FAM + """, ev as (
     (e.body->'usage'->>'inputTokens')::bigint inp, (e.body->'usage'->>'outputTokens')::bigint outp,
     (e.body->'usage'->>'cacheReadTokens')::bigint cr, (e.body->'usage'->>'cacheCreationTokens')::bigint cc
   from fam f join session_events e on e.session_id = f.id
-  where e.deleted_at is null and e.created_at > now() - interval '{h} hours'
+  where e.deleted_at is null and e.created_at > now() - interval '{h} hours' and e.created_at <= now() - interval '{o} hours'
     and e.type in ('tool_call','tool_call_result','text','completion_ended','compact','child_session_spawned','error')
 )
 select f.root_id, f.id session_id, f.title, f.model, f.src, f.is_private, f.created_at,
@@ -45,7 +46,7 @@ select f.root_id, e.session_id, e.sequence, e.created_at, e.type,
        else left(e.body->'output'->'result'->'value'->>'outcome', 12) || ':' || coalesce(e.body->'output'->'result'->'value'->>'exitCode','') end v,
   length(e.body::text) blen
 from fam f join session_events e on e.session_id = f.id
-where e.deleted_at is null and e.created_at > now() - interval '{h} hours' and e.type in ('tool_call','tool_call_result')
+where e.deleted_at is null and e.created_at > now() - interval '{h} hours' and e.created_at <= now() - interval '{o} hours' and e.type in ('tool_call','tool_call_result')
 order by e.session_id, e.sequence"""
 SQL_C = FAM + """
 select f.root_id, e.session_id, e.sequence, e.created_at, e.role, e.type,
@@ -58,15 +59,16 @@ select f.root_id, e.session_id, e.sequence, e.created_at, e.role, e.type,
     when 'completion_ended' then (e.body->'usage'->>'inputTokens') || '/' || (e.body->'usage'->>'cacheReadTokens') || '/' || (e.body->'usage'->>'cacheCreationTokens') || '/' || (e.body->'usage'->>'outputTokens') || '/' || coalesce(e.body->>'costNanodollars','0')
   end v
 from fam f join session_events e on e.session_id = f.id
-where e.deleted_at is null and e.created_at > now() - interval '{h} hours'
+where e.deleted_at is null and e.created_at > now() - interval '{h} hours' and e.created_at <= now() - interval '{o} hours'
   and (e.type in ('text','thinking','compact','error','completion_ended') or (e.type='tool_call' and e.body->'call'->>'name' in ('respond','ask_user_question')))
 order by e.session_id, e.sequence"""
 
 if len(sys.argv) > 1 and sys.argv[1] == "sql":
     user, org = sys.argv[2], sys.argv[3]
     h = sys.argv[4] if len(sys.argv) > 4 else "24"
+    o = sys.argv[5] if len(sys.argv) > 5 else "0"
     for name, q in (("A", SQL_A), ("B", SQL_B), ("C", SQL_C)):
-        print(f"-- ===== QUERY {name} =====\n" + q.format(user=user, org=org, h=h) + "\n")
+        print(f"-- ===== QUERY {name} =====\n" + q.format(user=user, org=org, h=h, o=o) + "\n")
     sys.exit(0)
 if len(sys.argv) != 5 or sys.argv[1] != "report":
     print(__doc__); sys.exit(2)
